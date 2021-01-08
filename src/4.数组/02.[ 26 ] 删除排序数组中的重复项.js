@@ -63,4 +63,5 @@ let test1 = [0,0,1,1,1,2,2,3,3,4]
 console.time('执行用时');
 console.log(removeDuplicates(test));
 console.log(removeDuplicates1(test1));
+console.log(removeDuplicates2(test1));
 console.timeEnd('执行用时');
