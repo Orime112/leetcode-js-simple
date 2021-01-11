@@ -38,5 +38,5 @@ var findRepeatNumber = function (nums) {
 let test = ''
 
 console.time('执行用时');
-console.log(xxx(test));
+console.log(findRepeatNumber(test));
 console.timeEnd('执行用时');

@@ -51,7 +51,7 @@ var isUnique1 = function (astr) {
  */
 var isUnique2 = function (astr) {
   for (let v of astr) {
-    if (astr.indexOf(astr[i]) != astr.lastIndexOf(astr[i])) {
+    if (astr.indexOf(v) != astr.lastIndexOf(v)) {
       return false
     }
   }
