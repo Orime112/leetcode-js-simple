@@ -34,111 +34,107 @@ linkedList.get(1);            //返回3
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  */
 
+// ! 首先要创建结点类
+function ListNode(val) {
+  this.val = val
+  this.next = null
+}
 
 /**
  * Initialize your data structure here.
  */
 var MyLinkedList = function () {
   this.head = null
-  this.val = null
-  this.next = null
-  this.prev = null
-};
+  this.rear = null
+  this.len = 0
+}
 
 /**
- * Get the value of the index-th node in the linked list. If the index is invalid, return -1. 
+ * Get the value of the index-th node in the linked list. If the index is invalid, return -1.
  * @param {number} index
  * @return {number}
  */
 MyLinkedList.prototype.get = function (index) {
-  if (index < 0) return -1
-  if (index === 0) return this.head ? this.head.val : null
-  let cur = this.head
-  let i = 1
-  while (cur.next) {
-    cur = cur.next
-    if (i === index) {
-      return cur.val
-    }
+  if (index < 0 || index > this.len - 1) return -1
+  var node = this.head
+  while (index-- > 0) {
+    if (node.next == null) return -1
+    node = node.next
   }
-  return -1
-};
+  return node.val
+}
 
 /**
- * Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. 
+ * Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.
  * @param {number} val
  * @return {void}
  */
 MyLinkedList.prototype.addAtHead = function (val) {
-  const newNode = new MyLinkedList()
-  newNode.val = val
-  newNode.next = this.head
-  this.head = newNode // * 原来的head：{val: 1, next: {val: 2: next: null}}
-};
+  var node = new ListNode(val)
+  if (this.head == null) this.rear = node
+  else node.next = this.head
+  this.head = node
+  this.len++
+}
 
 /**
- * Append a node of value val to the last element of the linked list. 
+ * Append a node of value val to the last element of the linked list.
  * @param {number} val
  * @return {void}
  */
 MyLinkedList.prototype.addAtTail = function (val) {
-  const newNode = new MyLinkedList()
-  newNode.val = val
-  let cur = this.head
-  while (cur.next) {
-    cur = cur.next
-  }
-  cur.next = newNode
-};
+  var node = new ListNode(val)
+  if (this.head == null) this.head = node
+  else this.rear.next = node
+  this.rear = node
+  this.len++
+}
 
 /**
- * Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. 
- * @param {number} index 
+ * Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted.
+ * @param {number} index
  * @param {number} val
  * @return {void}
  */
 MyLinkedList.prototype.addAtIndex = function (index, val) {
-  const newNode = new MyLinkedList()
-  if (index <= 0) {
-    newNode.next = this.head
-    this.head = newNode
-    return
+  if (index <= 0) return this.addAtHead(val)
+  if (this.len < index) return
+  if (index == this.len) return this.addAtTail(val)
+  var node = this.head
+  while (index-- > 1) {
+    node = node.next
   }
-  let cur = this.head
-  let i = 1
-  while (cur.next) {
-    if (i === index) {
-      newNode.next = cur.next
-      cur.next = newNode
-      return
-    }
-    cur = cur.next
-    i++
-  }
-};
+
+  var newnode = new ListNode(val)
+  newnode.next = node.next
+  node.next = newnode
+  this.len++
+}
 
 /**
- * Delete the index-th node in the linked list, if the index is valid. 
+ * Delete the index-th node in the linked list, if the index is valid.
  * @param {number} index
  * @return {void}
  */
 MyLinkedList.prototype.deleteAtIndex = function (index) {
-  if (index < 0) return
-  if (index === 0) return this.head = this.head.next
-  let cur = this.head
-  let i = 1
-  while (cur.next) {
-    if (i === index) {
-      // * 如果后面有节点
-      // if(cur.next.next){
-      //   cur.next = cur.next.next
-      // } else {
-      //   cur.next = null
-      // }
-      cur.next = cur.next?.next
-    }
+  if (index < 0 || index > this.len - 1 || this.len == 0) return
+  if (index == 0) {
+    this.head = this.head.next
+    this.len--
+    return
   }
-};
+
+  var node = this.head
+  var myindex = index
+  while (index-- > 1) {
+    node = node.next
+  }
+  if (myindex == this.len - 1) {
+    this.rear = node
+  }
+  node.next = node.next.next
+  this.len--
+}
 
 /**
  * Your MyLinkedList object will be instantiated and called as such:
@@ -149,3 +145,7 @@ MyLinkedList.prototype.deleteAtIndex = function (index) {
  * obj.addAtIndex(index,val)
  * obj.deleteAtIndex(index)
  */
+
+// Your MyLinkedList object will be instantiated and called as such:
+
+module.exports = MyLinkedList
