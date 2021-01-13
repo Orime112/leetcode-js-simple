@@ -26,11 +26,31 @@
  * @return {ListNode}
  */
 var reverseList = function (head) {
-
+  let store = head
+  let pre = null
+  let cur = head
+  // * null  1---->2---->3---->4---->5---->NULL
+  // ? pre  cur  next
+  while (cur) {
+    let next = cur.next // 存储 节点 2 到 next 上
+    cur.next = pre  // 更改节点 1 的 next 为 null
+    pre = cur // 存储节点 1 为 pre
+    cur = next
+  }
+  return pre
 };
 
 // 测试用例
-let test = ''
+let test = {
+  val: 1,
+  next: {
+    val: 2,
+    next: {
+      val: 3,
+      next: null
+    }
+  }
+}
 
 console.time('执行用时');
 console.log(reverseList(test));

@@ -56,8 +56,8 @@
 const hasCycle = (head) => {
   const pointers = new Set()
   let cur = head
-  while(cur) {
-    if(!pointers.has(cur)) {
+  while (cur) {
+    if (!pointers.has(cur)) {
       pointers.add(cur)
       cur = cur.next
     } else {
@@ -82,12 +82,15 @@ const hasCycle = (head) => {
  * @return {boolean}
  */
 const hasCycle1 = (head) => {
-  let fast = low = head
-  let cur = head
-  while(cur){
-    low = cur.next
-    if(l)
+  let fast = head,
+    slow = head
+  while (fast) {
+    if (fast.next == null) return false
+    slow = slow.next
+    fast = fast.next.next
+    if (slow === fast) return true
   }
+  return false
 }
 
 // 测试用例
