@@ -36,17 +36,29 @@ var minDepth = function (root) {
       if (!node.left && !node.right) {
         return res
       }
-      stack.push(node.left, node.right)
+      node.left && stack.push(node.left)
+      node.right && stack.push(node.right)
     }
     res++
     queue = stack
   }
   return res
-};
+}
+
+// * 思路二：深度优先遍历（递归）
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var minDepth1 = function (root) {
+  if (!root) return 0
+  return Math.min(minDepth1(root.left), minDepth1(root.right)) + 1
+}
 
 // 测试用例
-let test = ''
+let test = ""
 
-console.time('执行用时');
-console.log(xxx(test));
-console.timeEnd('执行用时');
+console.time("执行用时")
+console.log(xxx(test))
+console.timeEnd("执行用时")
