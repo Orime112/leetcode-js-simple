@@ -21,15 +21,15 @@
 你不需要考虑数组中超出新长度后面的元素。
  */
 
-// * 思路：直接原地删除，使用 i-- 应对数组塌陷问题
+// * 思路一：直接原地删除，使用 i-- 应对数组塌陷问题
 
 /**
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function(nums) {
-  for(let i = 0; i < nums.length;){
-    if(nums[i] === nums[i-1]){
+var removeDuplicates = function (nums) {
+  for (let i = 0; i < nums.length;) {
+    if (nums[i] === nums[i - 1]) {
       nums.splice(i, 1)
       continue
     }
@@ -44,21 +44,21 @@ var removeDuplicates = function(nums) {
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates1 = function(nums) {
+var removeDuplicates1 = function (nums) {
   let i = 0
-  for(let j = 0; j < nums.length; j++){
-    if(nums[i] !== nums[j]){
+  for (let j = 0; j < nums.length; j++) {
+    if (nums[i] !== nums[j]) {
       i++
       nums[i] = nums[j]
     }
   }
-  nums.splice(i+1)
+  nums.splice(i + 1)
   return nums.length
 };
 
 // 测试用例
-let test = [1,1,2]
-let test1 = [0,0,1,1,1,2,2,3,3,4]
+let test = [1, 1, 2]
+let test1 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
 
 console.time('执行用时');
 console.log(removeDuplicates(test));
