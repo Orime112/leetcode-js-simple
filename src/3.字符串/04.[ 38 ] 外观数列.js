@@ -59,8 +59,8 @@ var countAndSay = function (n) {
   // }
   // return dp[n]
   // * 变量替换
-  let dp = '11'
-  for(let i = 3; i <= n; i++){
+  let dp = "11"
+  for (let i = 3; i <= n; i++) {
     dp = getStr(dp)
   }
   return dp
@@ -69,21 +69,22 @@ var countAndSay = function (n) {
 /**
  * * 如果'21'，从前向后比较，如果str[i] === str[i+1]，则 count++；否则 现在的count进行结算 res += String(count) + String(val)
  * * 重置
- * @param {*} str 
+ * @param {*} str
  */
-function getStr(str) { // '21' ---> '1211'
+function getStr(str) {
+  // '21' ---> '1211'
   let count = 1,
     res = ""
   for (let i = 0; i < str.length; i++) {
     const val = str[i]
-    if (val === str[i+1]) {
+    if (val === str[i + 1]) {
       count++
       if (i === str.length - 1) {
-        res += (String(count) + String(val))
+        res += String(count) + String(val)
         break
       }
     } else {
-      res += (String(count) + String(val))
+      res += String(count) + String(val)
       count = 1
     }
   }
@@ -95,18 +96,13 @@ function getStr(str) { // '21' ---> '1211'
  * @param {number} n
  * @return {string}
  */
-var countAndSay1 = function(n) {
-  let prev = '1'
-  for(let i = 1; i < n; i++){
-      prev = prev.replace(/(\d)\1*/g, item =>`${item.length}${item[0]}`)
+var countAndSay1 = function (n) {
+  let prev = "1"
+  for (let i = 1; i < n; i++) {
+    prev = prev.replace(/(\d)\1*/g, (item) => `${item.length}${item[0]}`)
   }
   return prev
-};
-
-// 作者：wangquanfugui12138
-// 链接：https://leetcode-cn.com/problems/count-and-say/solution/tong-guo-zheng-ze-he-bing-xiang-tong-yuan-su-wan-c/
-// 来源：力扣（LeetCode）
-// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+}
 
 // 测试用例
 let test = 1
@@ -122,3 +118,10 @@ console.timeEnd("执行用时")
 console.time("执行用时")
 console.log(countAndSay(test2))
 console.timeEnd("执行用时")
+
+// 1
+// 执行用时: 4.221ms
+// 1211
+// 执行用时: 0.099ms
+// 111221
+// 执行用时: 0.021ms

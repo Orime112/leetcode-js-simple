@@ -27,7 +27,7 @@
 /**
  * @param {TreeNode} root
  * @return {TreeNode}
- * * 和镜像一个逻辑--->递归出栈之前交换好（交换好底层子树，逐级回溯）
+ * * 和镜像一个逻辑--->递归出栈之前交换好（交换好底层子树，自底向上）
  */
 var invertTree = function (root) {
   if (!root) return null
@@ -43,7 +43,7 @@ var invertTree = function (root) {
 /**
  * @param {TreeNode} root
  * @return {TreeNode}
- * * 和镜像一个逻辑--->递归出栈之前交换好（交换好底层子树，逐级回溯）
+ * * 和镜像一个逻辑--->递归入栈之前交换好（交换好顶层，自顶向下）
  */
 var invertTree1 = function (root) {
   if (!root) return null
@@ -53,7 +53,7 @@ var invertTree1 = function (root) {
   return root
 }
 
-// * 思路三：大胆使用 BFS
+// ! 思路三：大胆使用 BFS -> 行不通
 
 /**
  * @param {TreeNode} root

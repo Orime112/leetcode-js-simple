@@ -20,7 +20,7 @@
 
  */
 
-// * 思路：公共前缀肯定是大家都有的前缀，就从前往后找，只有有一个没有该前缀了，就结束搜索（也可称之为纵向扫描
+// * 思路：公共前缀肯定是大家都有的前缀，就从前往后找，只要有一个没有该前缀了，就结束搜索（也可称之为纵向扫描
 /**
  * @param {string[]} strs
  * @return {string}
@@ -49,13 +49,11 @@ var longestCommonPrefix = (strs) => {
   return longestFix
 }
 
-
-
 // 测试用例
-let test = ["flower","flow","flight"]
-let test1 = ["dog","racecar","car"]
+let test = ["flower", "flow", "flight"]
+let test1 = ["dog", "racecar", "car"]
 
-console.time('执行用时');
-console.log(longestCommonPrefix(test));
-console.log(longestCommonPrefix(test1));
-console.timeEnd('执行用时');
+console.time("执行用时")
+console.log(longestCommonPrefix(test))
+console.log(longestCommonPrefix(test1))
+console.timeEnd("执行用时")

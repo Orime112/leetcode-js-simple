@@ -99,13 +99,29 @@ var plusOne2 = function (digits) {
   return digits
 };
 
+// * 思路四：BigInt解法
+
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne3 = function (digits) {
+  const numStr = digits.join('')
+  const numBig = BigInt(numStr)
+  const resBig = numBig + BigInt(1)
+  return resBig.toString().split('').map(Number)
+};
+
 // 测试用例
 let test = [1, 2, 3]
 let test1 = [9]
 let test2 = [9, 9]
+let test3 = [6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]
+
 
 console.time('执行用时');
 console.log(plusOne2(test));
 console.log(plusOne2(test1));
 console.log(plusOne2(test2));
+console.log(plusOne3(test3))
 console.timeEnd('执行用时');

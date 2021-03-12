@@ -26,7 +26,6 @@
  * @return {ListNode}
  */
 var reverseList = function (head) {
-  let store = head
   let pre = null
   let cur = head
   // * null  1---->2---->3---->4---->5---->NULL
