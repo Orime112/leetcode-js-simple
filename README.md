@@ -11,4 +11,4 @@
 ![](https://cdn.jsdelivr.net/gh/Orime112/picbed/img/20201228182334.png)
 
 ## 说明
-本仓库为实际刷题地址，想要跟着路线图一起刷的小伙伴，请访问[路线图模板地址](https://github.com/Orime112/leetcode-js-roadmap)
+本仓库为实际刷题地址，想要跟着路线图一起刷的小伙伴，请访问[路线图模板地址](https://github.com/orime/leetcode-js-roadmap)

@@ -31,6 +31,7 @@ var CheckPermutation = function(s1, s2) {
   const map2 = getCount(s2)
   if(Object.keys(map1).length !== Object.keys(map2).length) return false
   let res = true
+  console.log(Object.entries(map1), 'Object.entries(map1)',map1)
   for(let [k, v] of Object.entries(map1)){
     if(v !== map2[k]){
       res = false
@@ -78,6 +79,7 @@ var CheckPermutation2 = function(s1, s2) {
       if(s2.indexOf(s)==-1){
           return false;
       }else{
+        // * 如果能够找到则就地删除
           s2.splice(s2.indexOf(s),1);
       }
   }
@@ -94,4 +96,6 @@ let s1 = "abc", s2 = "acb"
 
 console.time('执行用时');
 console.log(CheckPermutation(s1, s2));
+console.log(CheckPermutation1(s1, s2));
+console.log(CheckPermutation2(s1, s2));
 console.timeEnd('执行用时');

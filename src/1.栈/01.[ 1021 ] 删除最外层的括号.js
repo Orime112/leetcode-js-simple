@@ -168,6 +168,18 @@ var removeOuterParentheses4 = function(S) {
   return res;
 };
 
+/**
+ * * Review
+ */
+var func = function(S){
+  let res = ''
+  let opend = 0
+  for(let c of S){
+    if(c === '(' && opend++ > 0) res += c;
+    if(c === ')' && opend-- > 1) res += c;
+  }
+}
+
 
 // 测试用例
 let test = "(()())(())"

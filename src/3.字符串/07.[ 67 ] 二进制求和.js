@@ -84,9 +84,9 @@ let a3 = "1111", b3 = "1111"
 
 console.time('执行用时');
 console.log(addBinary(a, b));
-console.log(addBinary(a1, b1));
+console.log(addBinary1(a1, b1));
 console.log(addBinary(a2, b2));
 console.log(addBinary(a3, b3));
 console.log(addBinary1(a3, b3));
-console.log(addBinary(a3, b3));
+console.log(addBinary2(a3, b3));
 console.timeEnd('执行用时');

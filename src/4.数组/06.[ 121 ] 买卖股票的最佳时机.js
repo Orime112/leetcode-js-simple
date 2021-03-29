@@ -11,7 +11,7 @@
 
 输入: [7,1,5,3,6,4]
 输出: 5
-解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+解释: 在第 2 天（股票价格 = 1）的时候买入， 在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
      注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
 示例 2:
 
@@ -29,7 +29,9 @@
 var maxProfit = function (prices) {
   if (!prices || !prices.length) return 0
   const len = prices.length
-  let max = 0, cur = 0, next = 0
+  let max = 0,
+    cur = 0,
+    next = 0
   for (let i = 0; i < len; i++) {
     cur = prices[i]
     for (let j = i + 1; j < len; j++) {
@@ -40,7 +42,7 @@ var maxProfit = function (prices) {
     }
   }
   return max
-};
+}
 
 // * 解法二：由于先买后卖，依次向后推进过程中，只需要跟踪最小值和最大差值即可
 
@@ -57,15 +59,15 @@ var maxProfit1 = function (prices) {
     res = Math.max(res, prices[i] - min)
   }
   return res
-};
+}
 
 // 测试用例
 let test = [7, 1, 5, 3, 6, 4]
 let test1 = [7, 6, 4, 3, 1]
 
-console.time('执行用时');
-console.log(maxProfit(test));
-console.log(maxProfit(test1));
-console.log(maxProfit1(test));
-console.log(maxProfit1(test1));
-console.timeEnd('执行用时');
+console.time("执行用时")
+console.log(maxProfit(test))
+console.log(maxProfit(test1))
+console.log(maxProfit1(test))
+console.log(maxProfit1(test1))
+console.timeEnd("执行用时")

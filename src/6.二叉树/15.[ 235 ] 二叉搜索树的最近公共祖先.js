@@ -31,19 +31,19 @@
  * @param {TreeNode} q
  * @return {TreeNode}
  */
-var lowestCommonAncestor = function (root, p, q) {
-  if (!root) return null
-  if (p.val < root.val && q.val < root.val) {
-    return lowestCommonAncestor(root.left)
+ var lowestCommonAncestor = function (root, p, q) {
+  if(!root) return null
+  if(p.val < root.val && q.val < root.val) {
+    return lowestCommonAncestor(root.left, p, q)
   }
-  if (p.val > root.val && q.val > root.val) {
-    return lowestCommonAncestor(root.right)
+  if(p.val > root.val && q.val > root.val){
+    return lowestCommonAncestor(root.right, p, q)
   }
   return root
 };
 
 // * 思路二：跟踪root节点变化进行while循环
-const lowestCommonAncestor = (root, p, q) => {
+const lowestCommonAncestor1 = (root, p, q) => {
   while (root) {
     if (p.val < root.val && q.val < root.val) {
       root = root.left;
@@ -55,6 +55,30 @@ const lowestCommonAncestor = (root, p, q) => {
   }
   return root;
 };
+
+  // * 思路三：更简洁容易理解的方式
+  const lowestCommonAncestor2 = function (root, p, q) {
+    // * 如果当前节点值和p.val或q.val任何一个相等就返回当前节点
+    if(root.val === p.val) return root
+    if(root.val === q.val) return root
+    // * 当p.val < root.val的时候
+    if(p.val < root.val) {
+      // * 如果q.val > root.val，就返回根节点
+      if(q.val > root.val){
+        return root
+      } else {
+        // * 否则说明 p.val & q.val 都小于 root.val
+        return lowestCommonAncestor2(root.left, p, q)
+      }
+    } else {
+      // * 当p.val > root.val时
+      if(q.val < root.val){
+        return root
+      } else {
+        return lowestCommonAncestor2(root.right, p, q)
+      }
+    }
+  };
 
 // 测试用例
 let test = ''

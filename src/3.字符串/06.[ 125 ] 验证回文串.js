@@ -22,23 +22,39 @@
  * @param {string} s
  * @return {boolean}
  */
-var isPalindrome = function(s) {
-  const str = s.replace(/[^a-zA-Z0-9]/g, '').toLocaleLowerCase()
+var isPalindrome = function (s) {
+  const str = s.replace(/[^a-zA-Z0-9]/g, "").toLocaleLowerCase()
   let i = 0,
-      j = str.length - 1,
-      res = true
-  while(i <= j){
-    if(str[i++] !== str[j--]){
-      res = false
-      break
+    j = str.length - 1
+  // res = true
+  while (i <= j) {
+    if (str[i++] !== str[j--]) {
+      // res = false
+      // break
+      return false
     }
   }
-  return res
-};
+  return true
+}
+
+// * 另一种思路：先转成小写字符，再分为前后两半进行比较
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome1 = function (s) {
+  const str = s.replace(/[^a-zA-Z0-9]/g, "").toLocaleLowerCase()
+  const halfLength = Math.floor(str.length / 2)
+  const left = str.slice(0, halfLength)
+  let right = str.slice(-halfLength)
+  return left === right.split("").reverse().join("")
+}
 
 // 测试用例
 let test = "A man, a plan, a canal: Panama"
 
-console.time('执行用时');
-console.log(isPalindrome(test));
-console.timeEnd('执行用时');
+console.time("执行用时")
+console.log(isPalindrome(test))
+console.log(isPalindrome1(test))
+console.timeEnd("执行用时")

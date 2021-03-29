@@ -26,34 +26,34 @@
  * @param {number} k
  * @return {number[]}
  */
-var maxSlidingWindow = function(nums, k) {
-  if(!nums.length) return[]
+var maxSlidingWindow = function (nums, k) {
+  if (!nums.length) return []
   const res = []
   const stack = []
   let max = null
   // *  找最大值
   function findMax(list) {
     let max = -Infinity
-    for(let i = 0; i < list.length; i++){
+    for (let i = 0; i < list.length; i++) {
       const val = list[i]
       max = val > max ? val : max
     }
     return max
   }
-  for(let i = 0; i < k; i++){
+  for (let i = 0; i < k; i++) {
     const val = nums[i]
     stack.push(val)
   }
   max = findMax(stack)
   res.push(max)
-  for(let i = k; i < nums.length; i++){
+  for (let i = k; i < nums.length; i++) {
     const val = nums[i]
     const tail = stack.shift()
     stack.push(val)
-    if(val >= max){
+    if (val >= max) {
       // 如果新加入的值比当前最大值还要大
       max = val
-    } else if (tail === max){
+    } else if (tail === max) {
       // 如果新加入的值没有最大值大并且shift出去的值就是当前最大值
       max = findMax(stack)
     } else {
@@ -62,13 +62,12 @@ var maxSlidingWindow = function(nums, k) {
     res.push(max)
   }
   return res
-};
-
-
+}
 
 // 测试用例
-let nums = [1,3,-1,-3,5,3,6,7],k = 3
+let nums = [1, 3, -1, -3, 5, 3, 6, 7],
+  k = 3
 
-console.time('执行用时');
-console.log(maxSlidingWindow(nums, k));
-console.timeEnd('执行用时');
+console.time("执行用时")
+console.log(maxSlidingWindow(nums, k))
+console.timeEnd("执行用时")

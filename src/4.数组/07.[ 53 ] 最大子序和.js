@@ -50,6 +50,27 @@ var maxSubArray1 = function (nums) {
   return maxAns;
 };
 
+var maxSubArray2 = function(nums) {
+  const n = nums.length;
+  for (let i = 1; i < n; i++) {
+    if (nums[i-1] > 0) {
+      nums[i] += nums[i-1]
+    }
+  }
+  return Math.max.apply(this, nums)
+}
+
+var maxSubArray3 = function(nums){
+  for(let i = 0; i < nums.length; i++){
+    if(nums[i - 1] > 0){
+      nums[i] += nums[i - 1]
+    }
+  }
+  return Math.max(nums)
+}
+
+
+
 // 测试用例
 let test = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 let test1 = [-2, 1]
@@ -59,4 +80,6 @@ console.log(maxSubArray(test));
 console.log(maxSubArray(test1));
 console.log(maxSubArray1(test));
 console.log(maxSubArray1(test1));
+console.log(maxSubArray2(test));
+console.log(maxSubArray2(test1));
 console.timeEnd('执行用时');
