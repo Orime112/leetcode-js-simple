@@ -49,13 +49,11 @@ var longestCommonPrefix = (strs) => {
   return longestFix
 }
 
-
-
 // 测试用例
-let test = ["flower","flow","flight"]
-let test1 = ["dog","racecar","car"]
+let test = ["flower", "flow", "flight"]
+let test1 = ["dog", "racecar", "car"]
 
-console.time('执行用时');
-console.log(longestCommonPrefix(test));
-console.log(longestCommonPrefix(test1));
-console.timeEnd('执行用时');
+console.time("执行用时")
+console.log(longestCommonPrefix(test))
+console.log(longestCommonPrefix(test1))
+console.timeEnd("执行用时")

@@ -29,21 +29,21 @@ S 仅由小写英文字母组成。
  * @param {string} S
  * @return {string}
  */
-var removeDuplicates = function(S) {
-  const res = []
-  for(let i = 0; i < S.length; i++){
-    if(res[res.length - 1] !== S[i]){
+var removeDuplicates = function (S) {
+  const res = [S[0]]
+  for (let i = 1; i < S.length; i++) {
+    if (res[res.length - 1] !== S[i]) {
       res.push(S[i])
-    }else {
+    } else {
       res.pop()
     }
   }
-  return res.join('')
-};
+  return res.join("")
+}
 
 // 测试用例
 let test = "abbaca"
 
-console.time('执行用时');
-console.log(removeDuplicates(test));
-console.timeEnd('执行用时');
+console.time("执行用时")
+console.log(removeDuplicates(test))
+console.timeEnd("执行用时")
