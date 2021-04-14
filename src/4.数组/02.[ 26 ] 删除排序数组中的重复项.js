@@ -28,7 +28,7 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-  for (let i = 0; i < nums.length;) {
+  for (let i = 0; i < nums.length; ) {
     if (nums[i] === nums[i - 1]) {
       nums.splice(i, 1)
       continue
@@ -36,7 +36,7 @@ var removeDuplicates = function (nums) {
     i++
   }
   return nums.length
-};
+}
 
 // * 解法二：快慢双指针，定义 i 为慢指针，j 为快指针，如果nums[j] !== nums[i]，则 [nums[i+1], nums[j]] = [nums[j], nums[i+1]],i+1
 
@@ -54,14 +54,14 @@ var removeDuplicates1 = function (nums) {
   }
   nums.splice(i + 1)
   return nums.length
-};
+}
 
 // 测试用例
 let test = [1, 1, 2]
 let test1 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
 
-console.time('执行用时');
-console.log(removeDuplicates(test));
-console.log(removeDuplicates1(test1));
-console.log(removeDuplicates2(test1));
-console.timeEnd('执行用时');
+console.time("执行用时")
+console.log(removeDuplicates(test))
+console.log(removeDuplicates1(test1))
+// console.log(removeDuplicates2(test1));
+console.timeEnd("执行用时")

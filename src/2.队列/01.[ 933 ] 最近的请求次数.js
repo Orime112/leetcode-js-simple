@@ -31,21 +31,28 @@ recentCounter.ping(3002);  // requests = [1, 100, 3001, 3002]，范围是 [2,300
 // * 思路：上一次做的是用栈解决的，其实用数组有更优雅的实现
 
 // * 解法二：由于表明ping传入的值是递增的，所以前面没有包含的值后面一定不会包含到，所以使用队列解决更好
-var RecentCounter = function() {
+var RecentCounter = function () {
   this.stack = []
-};
+}
 
-/** 
+/**
  * @param {number} t
  * @return {number}
  */
-RecentCounter.prototype.ping = function(t) {
+RecentCounter.prototype.ping = function (t) {
   // * 每次ping的时候将本次请求时间存入栈中
   this.stack.push(t)
-  // * 划分区间，从后向前遍历stack，时间区间以内的计数+1
+  // * 记录当前区间值
   const minTime = t - 3000
-  while(this.stack[0] < minTime){
+  // * 从前向后比较，达不到时间区间的就弹出
+  while (this.stack[0] < minTime) {
     this.stack.shift()
   }
   return this.stack.length
-};
+}
+
+let recentCounter = new RecentCounter()
+console.log(recentCounter.ping(1)) // requests = [1]，范围是 [-2999,1]，返回 1
+console.log(recentCounter.ping(100)) // requests = [1, 100]，范围是 [-2900,100]，返回 2
+console.log(recentCounter.ping(3001)) // requests = [1, 100, 3001]，范围是 [1,3001]，返回 3
+console.log(recentCounter.ping(3002)) // requests = [1, 100, 3001, 3002]，范围是 [2,3002]，返回 3

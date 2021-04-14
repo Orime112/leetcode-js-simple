@@ -3,13 +3,11 @@
  * * 题目地址：https://leetcode-cn.com/problems/min-cost-climbing-stairs
  */
 
-// * 思路：
-
-
+// * 思路：搜索在长度为2的台阶中最小体力台阶
 
 // 测试用例
-let test = ''
+let test = ""
 
-console.time('执行用时');
-console.log(xxx(test));
-console.timeEnd('执行用时');
+console.time("执行用时")
+// console.log(xxx(test))
+console.timeEnd("执行用时")
